@@ -1,5 +1,5 @@
 
-# 🛡️ Complete Setup for User mystrotamer with Flask, SSH, and GitHub
+# 🚀 Full Deployment Guide for mystrotamer on mystrotamer.com
 
 ---
 
@@ -19,8 +19,21 @@ sudo chmod 700 /home/mystrotamer/.ssh
 
 ```powershell
 ssh-keygen -t ed25519 -C "mystrotamer-key-local to server" -f ${env:USERPROFILE}\.ssh\id_mystrotamer
+```
+
+
+```powershell
 Get-Content ${env:USERPROFILE}\.ssh\id_mystrotamer.pub | Set-Clipboard
 ```
+
+```powershell
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_github_mystrotamer
+    IdentitiesOnly yes
+```
+
 
 ### 📥 Paste the Key into the Server:
 
@@ -59,8 +72,29 @@ ssh -T git@github.com
 
 ```bash
 ssh-keygen -t ed25519 -C "mystrotamer-github-server" -f ~/.ssh/id_github_mystrotamer
+```
+
+```bash
 cat ~/.ssh/id_github_mystrotamer.pub
 ```
+
+```bash
+nano ~/.ssh/config
+```
+
+```bash
+Host github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_github_mystrotamer
+IdentitiesOnly yes
+```
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_github_mystrotamer
+```
+
 
 📌 Add the key to GitHub → Settings → SSH Keys.
 
