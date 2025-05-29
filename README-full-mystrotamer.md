@@ -41,7 +41,7 @@ ssh -i ${env:USERPROFILE}\.ssh\id_mystrotamer -p 13976 mystrotamer@78.47.205.8
 ## 🖥️ 3. Generate SSH Key on Local Machine (Windows) for GitHub
 
 ```powershell
-ssh-keygen -t ed25519 -C "mystrotamer-github-local" -f ${env:USERPROFILE}\.ssh\id_github_mystrotamer
+ssh-keygen -t ed25519 -C "mystrotamer-github-local" -f $env:USERPROFILE\.ssh\id_github_mystrotamer
 Get-Content ${env:USERPROFILE}\.ssh\id_github_mystrotamer.pub | Set-Clipboard
 ```
 
